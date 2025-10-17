@@ -1,143 +1,69 @@
-# Neural-Networks-and-Deep-Learning-Course
-# 🧠 Assignment 1 – Neural Networks & Deep Learning
+# 🧠 Neural-Networks-and-Deep-Learning-Course
+This repository contains the code for a university project on Neural Networks and Deep Learning. 
+# Assignment 1 – Neural Networks for Image Classification on CIFAR-10
+The project explores the implementation, training, and evaluation of various Convolutional Neural Network (CNN) architectures for image classification using the CIFAR-10 dataset.
 
-## 🎯 Objective
-The goal of this assignment is to **design and implement a feedforward neural network (NN)** trained using the **back-propagation algorithm** to solve a **multi-class classification problem**.
+## Project Overview
 
-The network can be:
-- A **Fully Connected Neural Network (MLP)**,  
-- A **Convolutional Neural Network (CNN)**, or  
-- A **hybrid architecture** combining both.  
+The core task is to build and compare different neural network models to classify images from the CIFAR-10 dataset into 10 distinct categories. The notebooks cover data loading, preprocessing, model definition, training, and performance evaluation. Different architectures are explored, including variations in layers, dropout rates, and the use of parallel processing for training.
 
-Training can be performed using either **supervised** or **self-supervised learning** techniques.
+The general workflow in each notebook is as follows:
 
----
+1. **Load Data**: The CIFAR-10 dataset is loaded.
 
-## 🧩 Description & Requirements
+2. **Preprocess Data**: Images are normalized, and labels are one-hot encoded. Data augmentation techniques are also applied to improve model generalization.
 
-### 1. Neural Network Implementation
-- Develop a program in any programming language that implements a feedforward NN.  
-- Train it using **back-propagation**.  
-- Apply it to a **multi-class classification task other than MNIST**.
+3. **Define Model**: Several CNN architectures are defined using the Keras Sequential API.
 
----
+4. **Compile and Train**: The models are compiled with an optimizer (like Adam) and a loss function (categorical cross-entropy) and then trained on the dataset. Callbacks for early stopping and model checkpointing are used to optimize the training process.
 
-### 2. Dataset
-You may choose **one of the following datasets**:
+5. **Evaluate**: The trained models are evaluated on the test set to measure their accuracy and loss.
 
-- [`CIFAR-10`](https://www.cs.toronto.edu/~kriz/cifar.html)  
-- [`CIFAR-100`](https://www.cs.toronto.edu/~kriz/cifar.html)  
-- [`SVHN`](http://ufldl.stanford.edu/housenumbers/)  
-- [`ImageNet100`](https://www.kaggle.com/datasets/ambityga/imagenet100)  
-- [`Tiny-ImageNet`](https://huggingface.co/datasets/zh-plus/tiny-imagenet)  
+6. **Visualize Results**: The training and validation accuracy and loss are plotted over epochs to visualize the learning process.
 
-Alternatively, any **multi-class classification dataset** from [Kaggle Datasets](https://www.kaggle.com/datasets) can be used.
+## Libraries and Frameworks
 
-If the dataset does not provide a predefined test set, it must be **randomly split** as follows:
-- 60% for training  
-- 40% for testing  
-or use a **cross-validation** technique.
+The project primarily relies on the following Python libraries and frameworks:
 
----
+* **TensorFlow**: An end-to-end open-source platform for machine learning.
 
-### 3. Feature Extraction
-- Either use the entire input directly or select **meaningful features** (e.g., pixel intensities, average brightness across rows/columns, etc.).  
-- Optionally, apply **dimensionality reduction using PCA (Principal Component Analysis)**.
+* **Keras**: A high-level neural networks API, running on top of TensorFlow, used for building and training the models.
 
----
+* **Scikit-learn**: Used for splitting the data into training and validation sets.
 
-### 4. Evaluation and Reporting
-A written report must include:
-- A detailed **description of the implemented algorithm and architecture**.  
-- **Examples** of correctly and incorrectly classified samples.  
-- **Performance metrics** (accuracy) for:
-  - Training phase  
-  - Testing phase  
-- **Training time** and results for different:
-  - Hidden layer sizes  
-  - Learning parameters (e.g., learning rate, epochs, activation functions, etc.)
-- **Comparative performance analysis** with:
-  - **Nearest Neighbor (NN) classifier**  
-  - **Nearest Class Centroid (NCC) classifier**  
-- **Discussion and interpretation** of the results.  
-- **Code documentation** and comments.
+* **NumPy**: A fundamental package for scientific computing with Python, used for numerical operations.
 
----
+* **Matplotlib**: A plotting library used for creating static, animated, and interactive visualizations, particularly for plotting the training history.
 
-## 🧰 Tools and Frameworks
-The implementation may be done in any language. However, use of **Deep Learning frameworks** is encouraged:
+* **Time & OS**: Standard Python libraries used for tracking training time and managing file paths.
 
-- [TensorFlow](https://www.tensorflow.org/)  
-- [PyTorch](https://pytorch.org/)  
-- [Keras](https://keras.io/)
+## Code Files Summary
 
-Additionally, **self-supervised contrastive learning** can be explored (e.g., [MIFA-Lab/contrastive2021](https://github.com/MIFA-Lab/contrastive2021)).
+* `model_-1.ipynb`: This notebook represents a baseline or initial CNN model. It sets up the standard pipeline for data loading, preprocessing, model definition, training, and evaluation.
 
----
+* `model_2.ipynb`: This file contains a more complex or refined version of the baseline model. It includes architectural changes like more convolutional layers, different dropout rates, or batch normalization to improve performance.
 
-## 📅 Deadlines
-- **Intermediate Assignment:** *November 10, 2024*  
-  Implement and compare the performance of:
-  - **Nearest Neighbor classifier** (k = 1 and k = 3)  
-  - **Nearest Class Centroid classifier**
-  using the chosen dataset.
+* `model_-1_parallel.ipynb`: This notebook explores distributed training. It adapts one of the models to be trained using TensorFlow's `MirroredStrategy`, which allows for training the model across multiple available GPUs in parallel to speed up the process.
 
-- **Final Assignment:** *November 24, 2024 (23:59)*  
-  Late submissions are penalized by **−10% per day** (up to 5 days).  
-  After all submissions, a **presentation and oral examination** will follow, including discussion of the code.
+This collection of notebooks provides a comprehensive exploration of building and optimizing CNNs for a standard image classification benchmark.
+Important files (where to look):
+- The Jupyter notebooks in folder: "1o - Κατασκευή Νευρωνικού Δικτύου CNN-MLP" — open the .ipynb files to see the exact notebook-code and its results.
+- Report PDF: ΝΝ_ΕΡΓΑΣΙΑ_Νικος_Τουλκεριδης_10718.pdf — explains goals, experiments, and results.
 
----
+Inputs:
+- Dataset files referenced in the notebooks (see notebook cells to find dataset path and format).
+- Notebook parameters (batch size, epochs, learning rate) defined in the code cells.
 
-## 📚 References
-- [CIFAR-10 & CIFAR-100](https://www.cs.toronto.edu/~kriz/cifar.html)  
-- [SVHN Dataset](http://ufldl.stanford.edu/housenumbers/)  
-- [ImageNet100 (Kaggle)](https://www.kaggle.com/datasets/ambityga/imagenet100)  
-- [Tiny-ImageNet (HuggingFace)](https://huggingface.co/datasets/zh-plus/tiny-imagenet)  
-- [Contrastive Self-Supervised Learning Example](https://github.com/MIFA-Lab/contrastive2021)  
+Outputs:
+- Trained model weights (if saved by the notebooks).
+- Plots: training/validation loss and accuracy, confusion matrix, example predictions.
+- Numeric results: final accuracy, loss and short written conclusions in the PDF.
 
----
+Usage:
+- Open the .ipynb files in JupyterLab / Jupyter Notebook / Colab.
+- Run cells top-to-bottom (install required packages first).
+- To reproduce results, ensure the dataset path and any random seeds match what's set in the notebooks.
 
-**Author:** [ntoylker](https://github.com/ntoylker)
-   - Περιγραφή αλγορίθμου και αρχιτεκτονικής.
-   - Παράθεση **χαρακτηριστικών παραδειγμάτων ορθής και εσφαλμένης ταξινόμησης**.
-   - Παρουσίαση **ποσοστών επιτυχίας** για:
-     - Εκπαίδευση (training)
-     - Έλεγχο (testing)
-   - Σύγκριση αποτελεσμάτων για διαφορετικό:
-     - αριθμό νευρώνων στο κρυφό επίπεδο  
-     - παραμέτρους εκπαίδευσης  
-   - Σύγκριση με τους απλούς ταξινομητές:
-     - **Πλησιέστερος Γείτονας (Nearest Neighbor)**
-     - **Πλησιέστερο Κέντρο Κλάσης (Nearest Class Centroid)**
-   - Σχολιασμός αποτελεσμάτων και κώδικα.
+Notes / Caveats:
+- Filenames and text include Greek; check the first cells of notebooks for exact package imports and environment setup.
 
----
-
-## 🧰 Εργαλεία και Τεχνολογίες
-Η υλοποίηση μπορεί να γίνει σε οποιαδήποτε γλώσσα, ωστόσο προτείνεται η χρήση Deep Learning βιβλιοθηκών:
-
-- [TensorFlow](https://www.tensorflow.org/)
-- [PyTorch](https://pytorch.org/)
-- [Keras](https://keras.io/)
-
----
-
-## 📅 Προθεσμίες
-- **Ενδιάμεση Εργασία:** 10 Νοεμβρίου 2024  
-  Σύγκριση ταξινομητών Nearest Neighbor (με 1 και 3 γείτονες) και Nearest Class Centroid.
-- **Τελική Υποχρεωτική Εργασία:** 24 Νοεμβρίου 2024 (ώρα 24:00)  
-  Καθυστέρηση έως 5 ημέρες μειώνει τον βαθμό κατά 10% ανά ημέρα.  
-  Μετά την παράδοση, ακολουθεί **παρουσίαση και προφορική εξέταση** πάνω στην εργασία και τον κώδικα.
-
----
-
-## 📚 Παραπομπές
-- [CIFAR-10 & CIFAR-100](https://www.cs.toronto.edu/~kriz/cifar.html)  
-- [SVHN Dataset](http://ufldl.stanford.edu/housenumbers/)  
-- [ImageNet100 (Kaggle)](https://www.kaggle.com/datasets/ambityga/imagenet100)  
-- [Tiny-ImageNet (HuggingFace)](https://huggingface.co/datasets/zh-plus/tiny-imagenet)  
-- [Contrastive Self-Supervised Learning Example](https://github.com/MIFA-Lab/contrastive2021)
-
----
-
-**Συντάκτης:** [ntoylker](https://github.com/ntoylker)
