@@ -1,5 +1,6 @@
 # 🧠 Neural-Networks-and-Deep-Learning-Course
 This repository contains the code for a university project on Neural Networks and Deep Learning. 
+------------------------------------------------------------------------------------------------
 # Assignment 1 – Neural Networks for Image Classification on CIFAR-10
 The project explores the implementation, training, and evaluation of various Convolutional Neural Network (CNN) architectures for image classification using the CIFAR-10 dataset.
 
@@ -66,4 +67,41 @@ Usage:
 
 Notes / Caveats:
 - Filenames and text include Greek; check the first cells of notebooks for exact package imports and environment setup.
+-----------------------------------------------------------------------------------------------------------------------
+# Assignment 2 – Classical Classifiers and MLP for Image Classification
 
+This assignment shifts the focus from deep CNNs to traditional machine learning models and a basic Multi-Layer Perceptron (MLP), comparing their performance on the same CIFAR-10 dataset.
+
+## Project Overview
+
+The second assignment follows a similar logical workflow as the first one, including data loading, preprocessing, training, and evaluation. However, it introduces more intensive preprocessing steps like **Principal Component Analysis (PCA)** for dimensionality reduction and explores different classification algorithms.
+
+The key differences and additions are:
+
+* **Models Explored**: K-Nearest Neighbors (KNN), Nearest Centroid Classifier (NCC), Support Vector Machine (SVM), and a Multi-Layer Perceptron (MLP).
+
+* **Preprocessing**: In addition to normalization, the data is flattened into 1D vectors, standardized using `StandardScaler`, and its dimensionality is reduced with `PCA`.
+
+* **Hyperparameter Tuning**: This assignment heavily utilizes `GridSearchCV` for SVMs and manual grid searches for the MLP to find the best model parameters.
+
+* **Visualization**: Introduces `seaborn` to create heatmaps for visualizing the results of hyperparameter tuning.
+
+## Libraries and Frameworks
+
+This assignment uses the same core libraries as the first one but with a heavier emphasis on **Scikit-learn** for its classifiers and preprocessing tools. New libraries introduced are:
+
+* **Pandas**: Used for organizing the results from hyperparameter searches.
+
+* **Seaborn**: For advanced data visualization, specifically heatmaps.
+
+* **Joblib**: For saving and loading trained models (e.g., the optimized SVM).
+
+## Code Files Summary
+
+* `ToulkeridisNikolaosErgasia2_10718_KNN_NCC.py`: This script preprocesses the data with PCA and then implements and evaluates the K-Nearest Neighbors and Nearest Centroid classifiers.
+
+* `ToulkeridisNikolaosErgasia2_10718.py`: This is the main script for the Support Vector Machine classifier. It performs an extensive hyperparameter search using `GridSearchCV` to find the best-performing SVM model.
+
+* `ToulkeridisNikolaosErgasia2_10718_MLP.py`: Implements a Multi-Layer Perceptron. This script conducts a search over different numbers of neurons, learning rates, and batch sizes to optimize the simple neural network.
+
+* `ToulkeridisNikolaosErgasia2_10718_Test.py`: A utility script to load a saved, trained model (like the SVM) and visualize its predictions on a sample of test images.
