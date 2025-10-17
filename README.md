@@ -45,28 +45,6 @@ The project primarily relies on the following Python libraries and frameworks:
 * `model_2.ipynb`: This file contains a more complex or refined version of the baseline model. It includes architectural changes like more convolutional layers, different dropout rates, or batch normalization to improve performance.
 
 * `model_-1_parallel.ipynb`: This notebook explores distributed training. It adapts one of the models to be trained using TensorFlow's `MirroredStrategy`, which allows for training the model across multiple available GPUs in parallel to speed up the process.
-
-This collection of notebooks provides a comprehensive exploration of building and optimizing CNNs for a standard image classification benchmark.
-Important files (where to look):
-- The Jupyter notebooks in folder: "1o - Κατασκευή Νευρωνικού Δικτύου CNN-MLP" — open the .ipynb files to see the exact notebook-code and its results.
-- Report PDF: ΝΝ_ΕΡΓΑΣΙΑ_Νικος_Τουλκεριδης_10718.pdf — explains goals, experiments, and results.
-
-Inputs:
-- Dataset files referenced in the notebooks (see notebook cells to find dataset path and format).
-- Notebook parameters (batch size, epochs, learning rate) defined in the code cells.
-
-Outputs:
-- Trained model weights (if saved by the notebooks).
-- Plots: training/validation loss and accuracy, confusion matrix, example predictions.
-- Numeric results: final accuracy, loss and short written conclusions in the PDF.
-
-Usage:
-- Open the .ipynb files in JupyterLab / Jupyter Notebook / Colab.
-- Run cells top-to-bottom (install required packages first).
-- To reproduce results, ensure the dataset path and any random seeds match what's set in the notebooks.
-
-Notes / Caveats:
-- Filenames and text include Greek; check the first cells of notebooks for exact package imports and environment setup.
 -----------------------------------------------------------------------------------------------------------------------
 # Assignment 2 – Classical Classifiers and MLP for Image Classification
 
@@ -105,3 +83,50 @@ This assignment uses the same core libraries as the first one but with a heavier
 * `ToulkeridisNikolaosErgasia2_10718_MLP.py`: Implements a Multi-Layer Perceptron. This script conducts a search over different numbers of neurons, learning rates, and batch sizes to optimize the simple neural network.
 
 * `ToulkeridisNikolaosErgasia2_10718_Test.py`: A utility script to load a saved, trained model (like the SVM) and visualize its predictions on a sample of test images.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Assignment 3 – RBF Networks for Image Classification
+
+This assignment introduces a different type of neural network, the Radial Basis Function (RBF) network. The goal is to build, train, and evaluate an RBF network for classifying images from the CIFAR-10 dataset, tackling both binary and multi-class classification problems.
+
+## Project Overview
+
+The third assignment follows a structured approach to implementing an RBF network. Unlike the previous assignments that used pre-built Keras layers, this one involves a more hands-on implementation, including the logic for the RBF layer itself.
+
+The general workflow is as follows:
+1.  **Data Selection & Preprocessing**: The CIFAR-10 dataset is loaded, and the user can select either two specific classes for a binary problem or all ten for a multi-class problem. The images are then converted to grayscale, flattened, and their dimensionality is reduced using PCA.
+2.  **RBF Center Selection**: A key step in RBF networks is determining the centers for the radial basis functions. This is accomplished using the **K-Means clustering algorithm** on the training data.
+3.  **Model Training**: With the centers defined, the RBF network is trained. This involves calculating the activations of the hidden layer and then training the weights of the output layer.
+4.  **Evaluation and Visualization**: The trained model is evaluated on the test set using an accuracy score and a confusion matrix. The results are also visualized with examples of correct and incorrect classifications.
+
+## Libraries and Frameworks
+
+This assignment continues to use the core scientific computing and plotting libraries from the previous assignments. The most notable addition for the model's implementation is:
+
+* **Scikit-learn**: Used extensively for preprocessing (`PCA`, `StandardScaler`) and, most importantly, for the `KMeans` clustering algorithm to find the RBF centers.
+
+## Code Files Summary
+
+* `Toulkeridis_Nikolaos_RBF.ipynb`: This notebook contains the complete implementation for the RBF network. It handles the entire pipeline from data loading and preprocessing to defining the RBF network, training it using K-Means for center selection, and finally evaluating and visualizing its performance on the CIFAR-10 test data.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+This collection of notebooks provides a comprehensive exploration of building and optimizing Machine Learning Techniques for a standard image classification benchmark.
+Important files (where to look):
+- The Jupyter notebooks — open the .ipynb files to see the exact notebook-code and its results.
+- Report PDFs — explains goals, experiments, and results.
+
+Inputs:
+- Dataset files referenced in the notebooks (see notebook cells to find dataset path and format).
+- Notebook parameters (batch size, epochs, learning rate) defined in the code cells.
+
+Outputs:
+- Trained model weights (if saved by the notebooks).
+- Plots: training/validation loss and accuracy, confusion matrix, example predictions.
+- Numeric results: final accuracy, loss and short written conclusions in the PDF.
+
+Usage:
+- Open the .ipynb files in JupyterLab / Jupyter Notebook / Colab.
+- Run cells top-to-bottom (install required packages first).
+- To reproduce results, ensure the dataset path and any random seeds match what's set in the notebooks.
+
+Notes / Caveats:
+- Filenames and text include Greek; check the first cells of notebooks for exact package imports and environment setup.
